@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR Bots | Soluções Profissionais para Discord</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="logo tde.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #E50914;
+            --primary-dark: #B00710;
+            --dark: #0F0F0F;
+            --darker: #080808;
+            --light: #F5F5F5;
+            --gray: #1F1F1F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(15, 15, 15, 0.9);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            color: var(--light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--darker);
+            padding: 20px;
+            z-index: 99;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--light);
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') no-repeat center center/cover;
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border-left: 3px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* Portfolio */
+        .portfolio {
+            padding: 100px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(229, 9, 20, 0.8));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--gray);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .price span {
+            font-size: 16px;
+            color: var(--light);
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--gray);
+            border: none;
+            border-radius: 5px;
+            color: var(--light);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            color: var(--light);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from { right: -300px; opacity: 0; }
+            to { right: 20px; opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-content {
+            background-color: var(--darker);
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: var(--light);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        #productForm input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--gray);
+            border: none;
+            border-radius: 5px;
+            color: var(--light);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 60px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .price {
+                font-size: 36px;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+            
+            .contact-grid {
+                gap: 30px;
+            }
+
+            .modal-content {
+                margin: 20% auto;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 24px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 14px;
+            }
+            
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .section-title p {
+                font-size: 14px;
+            }
+            
+            .service-card, .pricing-card {
+                padding: 20px 15px;
+            }
+            
+            .service-icon {
+                font-size: 32px;
+            }
+            
+            .service-card h3 {
+                font-size: 18px;
+            }
+            
+            .price {
+                font-size: 32px;
+            }
+            
+            .contact-form input, 
+            .contact-form textarea {
+                padding: 12px;
+            }
+            
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .notification {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 90%;
+                right: 5%;
+                left: 5%;
+            }
+            
+            @keyframes slideIn {
+                from { top: -100px; opacity: 0; }
+                to { top: 20px; opacity: 1; }
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle">Contratar Plano</h3>
+            <form id="productForm">
+                <input type="hidden" id="selectedProduct">
+                <input type="hidden" id="selectedPrice">
+                <input type="text" id="discordUsername" placeholder="Seu nome de usuário no Discord (ex: usuario#1234)" required>
+                <input type="text" id="discordId" placeholder="Seu ID do Discord (ex: 123456789012345678)" required>
+                <button type="submit" class="cta-button">Enviar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">TDR <span>Bots</span></a>
+                <div class="nav-links">
+                    <a href="#services">Serviços</a>
+                    <a href="https://portifolio-th.vercel.app/">Portfólio</a>
+                    <a href="#portfolio">Galeria</a>
+                    <a href="#pricing">Preços</a>
+                    <a href="#contact">Contato</a>
+                    <a href="#contact" class="cta-button">Orçamento</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Serviços</a>
+        <a href="https://portifolio-th.vercel.app/">Portfólio</a>
+        <a href="#portfolio">Galeria</a>
+        <a href="#pricing">Preços</a>
+        <a href="#contact">Contato</a>
+        <a href="#contact" class="cta-button" style="display: inline-block; margin-top: 15px;">Orçamento</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Soluções <span>profissionais</span> para seu servidor Discord</h1>
+                <p>Bots personalizados, design exclusivo e configuração completa para levar sua comunidade ao próximo
+                    nível.</p>
+                <a href="#contact" class="cta-button">Comece agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos <span>Serviços</span></h2>
+                <p>Oferecemos soluções completas para sua comunidade no Discord</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Bots Personalizados</h3>
+                    <p>Desenvolvemos bots exclusivos para seu servidor com as funcionalidades que você precisa, desde
+                        moderação até sistemas complexos de economia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design de Servidor</h3>
+                    <p>Criação de identidade visual completa para seu Discord, incluindo ícones, banners, emojis
+                        personalizados e organização de canais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Configuração Completa</h3>
+                    <p>Montamos todo o servidor para você, com sistemas de cargos, permissões, canais temáticos e
+                        integração com outras plataformas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso <span>Portfólio</span></h2>
+                <p>Alguns dos projetos que já desenvolvemos para nossos clientes</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Bot de Moderação</h3>
+                        <p>Sistema avançado para servidor de 10k+ membros</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 2" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Design Completo</h3>
+                        <p>Identidade visual para servidor de jogos</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 3" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Sistema de Economia</h3>
+                        <p>Bot com loja, ranking e moeda virtual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos <span>Preços</span></h2>
+                <p>Planos acessíveis para todos os tipos de Famílias</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">R$35<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>Bot simples de Formulário</li>
+                        <li>Configuração básica do servidor</li>
+                        <li>Configuração inicial</li>
+                        <li>Suporte por 7 dias</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Básico', 'R$35')">Contratar</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-tag">Popular</div>
+                    <h3>Profissional</h3>
+                    <div class="price">R$75<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>Bot personalizado para Famílias completo.</li>
+                        <li>Configuração avançada</li>
+                        <li>Suporte por 30 dias</li>
+                        <li>5 revisões gratuitas</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Profissional', 'R$75')">Contratar</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">R$110<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>kit servidor personalizado completo</li>
+                        <li>Design premium + emojis personalizados</li>
+                        <li>Configuração completa</li>
+                        <li>Suporte por 90 dias</li>
+                        <li>5 revisões gratuitas</li>
+                        <li>Manutenção mensal</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Premium', 'R$110')">Contratar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pedidos<span> Personalizados</span></h2>
+                <p>Pronto para levar seu servidor Discord ao próximo nível?</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Vamos conversar</h3>
+                    <p>Tem um projeto em mente ou quer saber mais sobre nossos serviços? Entre em contato e vamos criar
+                        algo incrível juntos!</p>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>contato@TDRBots.com</p>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <p>+55 85 98729-3174</p>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <p>TDR Bots</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="discordForm">
+                        <input type="text" id="name" placeholder="Seu nome" required>
+                        <input type="email" id="email" placeholder="Seu e-mail" required>
+                        <input type="text" id="subject" placeholder="Assunto">
+                        <textarea id="message" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="cta-button">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Modal functionality
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.querySelector('.close-modal');
+        const productForm = document.getElementById('productForm');
+        const selectedProductInput = document.getElementById('selectedProduct');
+        const selectedPriceInput = document.getElementById('selectedPrice');
+        const discordUsernameInput = document.getElementById('discordUsername');
+        const discordIdInput = document.getElementById('discordId');
+
+        function openProductModal(productName, productPrice) {
+            document.getElementById('modalTitle').textContent = `Contratar Plano ${productName}`;
+            selectedProductInput.value = productName;
+            selectedPriceInput.value = productPrice;
+            productModal.style.display = 'block';
+        }
+
+        closeModal.addEventListener('click', function() {
+            productModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === productModal) {
+                productModal.style.display = 'none';
+            }
+        });
+
+        // Função para mostrar notificação
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            // Reset animation by briefly hiding and showing again
+            setTimeout(() => {
+                notification.style.display = 'none';
+                setTimeout(() => {
+                    notification.style.display = 'block';
+                }, 10);
+            }, 3000);
+        }
+
+        // Enviar formulário de produto
+        productForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const productName = selectedProductInput.value;
+            const productPrice = selectedPriceInput.value;
+            const discordUsername = discordUsernameInput.value;
+            const discordId = discordIdInput.value;
+            
+            if (!discordUsername || !discordId) {
+                showNotification('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            sendProductWebhook(productName, productPrice, discordUsername, discordId);
+            productModal.style.display = 'none';
+            productForm.reset();
+        });
+
+        // Função para enviar webhook de produto
+        function sendProductWebhook(productName, productPrice, discordUsername, discordId) {
+            // Substitua pelas URLs dos seus webhooks para cada produto
+            const webhooks = {
+                'Básico': 'https://discord.com/api/webhooks/1390824939208048732/gLanei2KXHkrQPNLYoJkopuMXm_8z648Q-4-9w1CB0dWHLlnGeypYMK7VPvs3AO9ew_b',
+                'Profissional': 'https://discord.com/api/webhooks/1390824941938671787/Lfdibwrzwmtcb6WtxGo0jwmRVVjmV5oohpbN-jwWow2TcMEsnEUlCSeBRXIq1u0RlHWO',
+                'Premium': 'https://discord.com/api/webhooks/1390825375889887395/vXYEhOeEuVYMsWMuzESLDajgjkF0l62F5r90k4fzgCmt9Q6OQSNA08vCYmJOQUyOcJE8'
+            };
+
+            const webhookURL = webhooks[productName];
+
+            if (!webhookURL) {
+                showNotification('Webhook não configurado para este produto.');
+                return;
+            }
+
+            const embed = {
+                title: `🎉 Novo pedido do plano ${productName}`,
+                color: 0xE50914,
+                fields: [
+                    {
+                        name: '👤 Usuário',
+                        value: `${discordUsername} (<@${discordId}>)`,
+                        inline: true
+                    },
+                    {
+                        name: '🆔 ID do Discord',
+                        value: discordId,
+                        inline: true
+                    },
+                    {
+                        name: '📦 Plano',
+                        value: productName,
+                        inline: true
+                    },
+                    {
+                        name: '💰 Preço',
+                        value: productPrice,
+                        inline: true
+                    },
+                    {
+                        name: '📅 Data',
+                        value: new Date().toLocaleString('pt-BR'),
+                        inline: false
+                    }
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            const data = {
+                content: `🎉 **Novo pedido recebido!** - ${productName} (${productPrice})\nUsuário: ${discordUsername} (<@${discordId}>)`,
+                embeds: [embed]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showNotification(`Pedido do plano ${productName} enviado com sucesso! Entraremos em contato em breve.`);
+                    } else {
+                        showNotification('Erro ao enviar pedido. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Erro ao enviar pedido. Tente novamente.');
+                });
+        }
+
+        // Formulário de contato
+        document.getElementById('discordForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Substitua pela sua URL do Webhook
+            const webhookURL = 'https://discord.com/api/webhooks/1386413524548583555/BPXL0YPkSbgLXeN8Nmwff57uO9qwJdxKlK-trVW43ZZQFkLmx1vBaD0cX1YTZ0QeiOue';
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const embed = {
+                title: '📩 Nova mensagem do site',
+                color: 0xE50914,
+                fields: [
+                    {
+                        name: '👤 Nome',
+                        value: name,
+                        inline: true
+                    },
+                    {
+                        name: '📧 E-mail',
+                        value: email,
+                        inline: true
+                    },
+                    {
+                        name: '📌 Assunto',
+                        value: subject || 'Não especificado',
+                        inline: false
+                    },
+                    {
+                        name: '💬 Mensagem',
+                        value: message,
+                        inline: false
+                    }
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            const data = {
+                content: '📩 **Nova mensagem recebida do site!**',
+                embeds: [embed]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showNotification('Mensagem enviada com sucesso!');
+                        document.getElementById('discordForm').reset();
+                    } else {
+                        showNotification('Erro ao enviar mensagem. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Erro ao enviar mensagem. Tente novamente.');
+                });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="https://portifolio-th.vercel.app/" class="footer-logo">TDR <span>Bots</span></a>
+            <div class="social-links">
+                <a href="https://discord.gg/tUEk88aE6J" class="social-link"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright"> © 2025 TDR Bots. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
