@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR Bots | Soluções Profissionais para Discord</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="logo tde.png" type="image/x-icon"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle">Contratar Plano</h3>
+            <form id="productForm">
+                <input type="hidden" id="selectedProduct">
+                <input type="hidden" id="selectedPrice">
+                <input type="text" id="discordUsername" placeholder="Seu nome de usuário no Discord (ex: usuario#1234)" required>
+                <input type="text" id="discordId" placeholder="Seu ID do Discord (ex: 123456789012345678)" required>
+                <button type="submit" class="cta-button">Enviar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">TDR <span>Bots</span></a>
+                <div class="nav-links">
+                    <a href="#services">Serviços</a>
+                    <a href="https://portifolio-th.vercel.app/">Portfólio</a>
+                    <a href="#portfolio">Galeria</a>
+                    <a href="#pricing">Preços</a>
+                    <a href="#contact">Contato</a>
+                    <a href="#contact" class="cta-button">Orçamento</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Serviços</a>
+        <a href="https://portifolio-th.vercel.app/">Portfólio</a>
+        <a href="#portfolio">Galeria</a>
+        <a href="#pricing">Preços</a>
+        <a href="#contact">Contato</a>
+        <a href="#contact" class="cta-button" style="display: inline-block; margin-top: 15px;">Orçamento</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Soluções <span>profissionais</span> para seu servidor Discord</h1>
+                <p>Bots personalizados, design exclusivo e configuração completa para levar sua comunidade ao próximo
+                    nível.</p>
+                <a href="#contact" class="cta-button">Comece agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos <span>Serviços</span></h2>
+                <p>Oferecemos soluções completas para sua comunidade no Discord</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Bots Personalizados</h3>
+                    <p>Desenvolvemos bots exclusivos para seu servidor com as funcionalidades que você precisa, desde
+                        moderação até sistemas complexos de economia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design de Servidor</h3>
+                    <p>Criação de identidade visual completa para seu Discord, incluindo ícones, banners, emojis
+                        personalizados e organização de canais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Configuração Completa</h3>
+                    <p>Montamos todo o servidor para você, com sistemas de cargos, permissões, canais temáticos e
+                        integração com outras plataformas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso <span>Portfólio</span></h2>
+                <p>Alguns dos projetos que já desenvolvemos para nossos clientes</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Bot de Moderação</h3>
+                        <p>Sistema avançado para servidor de 10k+ membros</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 2" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Design Completo</h3>
+                        <p>Identidade visual para servidor de jogos</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop"
+                        alt="Projeto 3" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Sistema de Economia</h3>
+                        <p>Bot com loja, ranking e moeda virtual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos <span>Preços</span></h2>
+                <p>Planos acessíveis para todos os tipos de Famílias</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">R$35<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>Bot simples de Formulário</li>
+                        <li>Configuração básica do servidor</li>
+                        <li>Configuração inicial</li>
+                        <li>Suporte por 7 dias</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Básico', 'R$35')">Contratar</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-tag">Popular</div>
+                    <h3>Profissional</h3>
+                    <div class="price">R$75<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>Bot personalizado para Famílias completo.</li>
+                        <li>Configuração avançada</li>
+                        <li>Suporte por 30 dias</li>
+                        <li>5 revisões gratuitas</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Profissional', 'R$75')">Contratar</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">R$110<span>/projeto</span></div>
+                    <ul class="pricing-features">
+                        <li>kit servidor personalizado completo</li>
+                        <li>Design premium + emojis personalizados</li>
+                        <li>Configuração completa</li>
+                        <li>Suporte por 90 dias</li>
+                        <li>5 revisões gratuitas</li>
+                        <li>Manutenção mensal</li>
+                    </ul>
+                    <button class="cta-button" onclick="openProductModal('Premium', 'R$110')">Contratar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pedidos<span> Personalizados</span></h2>
+                <p>Pronto para levar seu servidor Discord ao próximo nível?</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Vamos conversar</h3>
+                    <p>Tem um projeto em mente ou quer saber mais sobre nossos serviços? Entre em contato e vamos criar
+                        algo incrível juntos!</p>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>contato@TDRBots.com</p>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <p>+55 85 98729-3174</p>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <p>TDR Bots</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="discordForm">
+                        <input type="text" id="name" placeholder="Seu nome" required>
+                        <input type="email" id="email" placeholder="Seu e-mail" required>
+                        <input type="text" id="subject" placeholder="Assunto">
+                        <textarea id="message" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="cta-button">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Modal functionality
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.querySelector('.close-modal');
+        const productForm = document.getElementById('productForm');
+        const selectedProductInput = document.getElementById('selectedProduct');
+        const selectedPriceInput = document.getElementById('selectedPrice');
+        const discordUsernameInput = document.getElementById('discordUsername');
+        const discordIdInput = document.getElementById('discordId');
+
+        function openProductModal(productName, productPrice) {
+            document.getElementById('modalTitle').textContent = `Contratar Plano ${productName}`;
+            selectedProductInput.value = productName;
+            selectedPriceInput.value = productPrice;
+            productModal.style.display = 'block';
+        }
+
+        closeModal.addEventListener('click', function() {
+            productModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === productModal) {
+                productModal.style.display = 'none';
+            }
+        });
+
+        // Função para mostrar notificação
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            // Reset animation by briefly hiding and showing again
+            setTimeout(() => {
+                notification.style.display = 'none';
+                setTimeout(() => {
+                    notification.style.display = 'block';
+                }, 10);
+            }, 3000);
+        }
+
+        // Enviar formulário de produto
+        productForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const productName = selectedProductInput.value;
+            const productPrice = selectedPriceInput.value;
+            const discordUsername = discordUsernameInput.value;
+            const discordId = discordIdInput.value;
+            
+            if (!discordUsername || !discordId) {
+                showNotification('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            sendProductWebhook(productName, productPrice, discordUsername, discordId);
+            productModal.style.display = 'none';
+            productForm.reset();
+        });
+
+        // Função para enviar webhook de produto
+        function sendProductWebhook(productName, productPrice, discordUsername, discordId) {
+            // Substitua pelas URLs dos seus webhooks para cada produto
+            const webhooks = {
+                'Básico': 'https://discord.com/api/webhooks/1390824939208048732/gLanei2KXHkrQPNLYoJkopuMXm_8z648Q-4-9w1CB0dWHLlnGeypYMK7VPvs3AO9ew_b',
+                'Profissional': 'https://discord.com/api/webhooks/1390824941938671787/Lfdibwrzwmtcb6WtxGo0jwmRVVjmV5oohpbN-jwWow2TcMEsnEUlCSeBRXIq1u0RlHWO',
+                'Premium': 'https://discord.com/api/webhooks/1390825375889887395/vXYEhOeEuVYMsWMuzESLDajgjkF0l62F5r90k4fzgCmt9Q6OQSNA08vCYmJOQUyOcJE8'
+            };
+
+            const webhookURL = webhooks[productName];
+
+            if (!webhookURL) {
+                showNotification('Webhook não configurado para este produto.');
+                return;
+            }
+
+            const embed = {
+                title: `🎉 Novo pedido do plano ${productName}`,
+                color: 0xE50914,
+                fields: [
+                    {
+                        name: '👤 Usuário',
+                        value: `${discordUsername} (<@${discordId}>)`,
+                        inline: true
+                    },
+                    {
+                        name: '🆔 ID do Discord',
+                        value: discordId,
+                        inline: true
+                    },
+                    {
+                        name: '📦 Plano',
+                        value: productName,
+                        inline: true
+                    },
+                    {
+                        name: '💰 Preço',
+                        value: productPrice,
+                        inline: true
+                    },
+                    {
+                        name: '📅 Data',
+                        value: new Date().toLocaleString('pt-BR'),
+                        inline: false
+                    }
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            const data = {
+                content: `🎉 **Novo pedido recebido!** - ${productName} (${productPrice})\nUsuário: ${discordUsername} (<@${discordId}>)`,
+                embeds: [embed]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showNotification(`Pedido do plano ${productName} enviado com sucesso! Entraremos em contato em breve.`);
+                    } else {
+                        showNotification('Erro ao enviar pedido. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Erro ao enviar pedido. Tente novamente.');
+                });
+        }
+
+        // Formulário de contato
+        document.getElementById('discordForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Substitua pela sua URL do Webhook
+            const webhookURL = 'https://discord.com/api/webhooks/1386413524548583555/BPXL0YPkSbgLXeN8Nmwff57uO9qwJdxKlK-trVW43ZZQFkLmx1vBaD0cX1YTZ0QeiOue';
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const embed = {
+                title: '📩 Nova mensagem do site',
+                color: 0xE50914,
+                fields: [
+                    {
+                        name: '👤 Nome',
+                        value: name,
+                        inline: true
+                    },
+                    {
+                        name: '📧 E-mail',
+                        value: email,
+                        inline: true
+                    },
+                    {
+                        name: '📌 Assunto',
+                        value: subject || 'Não especificado',
+                        inline: false
+                    },
+                    {
+                        name: '💬 Mensagem',
+                        value: message,
+                        inline: false
+                    }
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            const data = {
+                content: '📩 **Nova mensagem recebida do site!**',
+                embeds: [embed]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showNotification('Mensagem enviada com sucesso!');
+                        document.getElementById('discordForm').reset();
+                    } else {
+                        showNotification('Erro ao enviar mensagem. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Erro ao enviar mensagem. Tente novamente.');
+                });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="https://portifolio-th.vercel.app/" class="footer-logo">TDR <span>Bots</span></a>
+            <div class="social-links">
+                <a href="https://discord.gg/tUEk88aE6J" class="social-link"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright"> © 2025 TDR Bots. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
